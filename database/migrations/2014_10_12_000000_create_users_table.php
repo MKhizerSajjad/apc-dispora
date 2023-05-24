@@ -22,6 +22,8 @@ class CreateUsersTable extends Migration
             $table->string('last_name', 15);
             $table->string('picture')->nullable();
             $table->string('mobile_number', 20)->nullable();
+            $table->enum('emergency_relation',['Husband', 'Wife', 'Partner','Father','Mother','Sister','Brother','Friend','Colleague'])->default('Friend');
+            $table->string('emergency_name', 80)->nullable();
             $table->string('emergency_number', 20)->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
