@@ -43,6 +43,23 @@
         return $type;
     }
     
+    function emergencyRelation($type = null)
+    {
+        $type = [
+            'Husband' => 'Husband',
+            'Wife' => 'Wife',
+            'Partner' => 'Partner',
+            'Father' => 'Father',
+            'Mother' => 'Mother',
+            'Sister' => 'Sister',
+            'Brother' => 'Brother',
+            'Friend' => 'Friend',
+            'Colleague' => 'Colleague',
+        ];
+        
+        return $type;
+    }
+    
     function membershipStatus($status = null, $type= null)
     {
         if(isset($type)) {

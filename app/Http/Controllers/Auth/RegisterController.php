@@ -84,10 +84,6 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
 
-        // $data['picture'];
-
-        // $data = $request->all();
-
         // Picture
         if (isset($data['picture'])) {
             $imageStorage = public_path('images/users');
@@ -110,15 +106,5 @@ class RegisterController extends Controller
         $data['password'] = Hash::make($data['password']);
         unset($data['password_confirmation']);
         return User::create($data);
-
-
-        // dd('bb');
-
-        // return User::create([
-        //     'first_name' => $data['first_name'],
-        //     'last_name' => $data['first_name'],
-        //     'email' => $data['email'],
-        //     'password' => Hash::make($data['password']),
-        // ]);
     }
 }
