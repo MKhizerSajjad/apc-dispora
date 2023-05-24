@@ -27,7 +27,7 @@
 
         @if (count($errors) > 0)
             <div class="alert alert-danger alert-border-left alert-dismissible fade show auto-colse-10">
-            <strong>Whoops!</strong> There were some problems with your input.<br><br>
+            <label>Whoops!</label> There were some problems with your input.<br><br>
             <ul>
                 @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>
@@ -44,13 +44,13 @@
                         {{-- <div class="row">
                             <div class="col-xs-6 col-sm-6 col-md-6">
                                 <div class="form-group">
-                                    <strong>First Name</strong>
+                                    <label>First Name</label>
                                     {!! Form::text('first_name', null, ['placeholder' => 'First Name', 'class' => 'form-control']) !!}
                                 </div>
                             </div>
                             <div class="col-xs-6 col-sm-6 col-md-6">
                                 <div class="form-group">
-                                    <strong>Last Name</strong>
+                                    <label>Last Name</label>
                                     {!! Form::text('last_name', null, ['placeholder' => 'Last Name', 'class' => 'form-control']) !!}
                                 </div>
                             </div>
@@ -58,13 +58,13 @@
                         <div class="row mt-2">
                             <div class="col-xs-6 col-sm-6 col-md-6">
                                 <div class="form-group">
-                                    <strong>Email</strong>
+                                    <label>Email</label>
                                     {!! Form::text('email', null, ['placeholder' => 'Email', 'class' => 'form-control']) !!}
                                 </div>
                             </div>
                             <div class="col-xs-6 col-sm-6 col-md-6">
                                 <div class="form-group">
-                                    <strong>Phone </strong>
+                                    <label>Phone </label>
                                     {!! Form::tel('phone', null, ['placeholder' => 'Phone', 'class' => 'form-control']) !!}
                                 </div>
                             </div>
@@ -72,13 +72,13 @@
                         <div class="row mt-2">
                             <div class="col-xs-6 col-sm-6 col-md-6">
                                 <div class="form-group">
-                                    <strong>Password</strong>
+                                    <label>Password</label>
                                     {!! Form::password('password', ['placeholder' => 'Password', 'class' => 'form-control']) !!}
                                 </div>
                             </div>
                             <div class="col-xs-6 col-sm-6 col-md-6">
                                 <div class="form-group">
-                                    <strong>Confirm Password</strong>
+                                    <label>Confirm Password</label>
                                     {!! Form::password('password_confirmation', ['placeholder' => 'Confirm Password', 'class' => 'form-control']) !!}
                                 </div>
                             </div>
@@ -87,9 +87,9 @@
                         <div class="row">
                             <div class="offset-xs-4 offset-sm-4 offset-md-4 col-xs-4 col-sm-4 col-md-4 col-offset-4">
                                 <div class="form-group">
-                                    <strong>Picture</strong>
+                                    <label>Picture</label>
                                     <input type="file" class="form-control" id="picture" name="picture" placeholder="Icon"  accept="image/*">
-                                    <img src="{{ asset('images/users/'.$user->picture) }}" onerror="{{ asset('images/users/user.jpg') }}" alt="{{ $user->first_name }}"  width="50" height="50">
+                                    <img src="{{ asset('images/users/'.$user->picture) }}"  onerror="this.onerror=null;this.src='{{ asset('admin/images/users/user-dummy-img.jpg') }}';" alt="{{ $user->first_name }}"  width="50" height="50">
                                 </div>
                             </div>
                         </div>
@@ -97,39 +97,59 @@
                         <div class="row">
                             <div class="col-xs-4 col-sm-4 col-md-4">
                                 <div class="form-group">
-                                    <strong>Title</strong>
+                                    <label>Title</label>
                                     {!! Form::select('title', userTitles(), $user->title, ['class' => 'form-select', 'placeholder' => 'Select Title']) !!}
                                 </div>
                             </div>
                             <div class="col-xs-4 col-sm-4 col-md-4">
                                 <div class="form-group">
-                                    <strong>First Name</strong>
+                                    <label>First Name</label>
                                     {!! Form::text('first_name', null, ['placeholder' => 'First Name', 'class' => 'form-control']) !!}
                                 </div>
                             </div>
                             <div class="col-xs-4 col-sm-4 col-md-4">
                                 <div class="form-group">
-                                    <strong>Last Name</strong>
+                                    <label>Last Name</label>
                                     {!! Form::text('last_name', null, ['placeholder' => 'Last Name', 'class' => 'form-control']) !!}
                                 </div>
                             </div>
                         </div>
                         <div class="row mt-2">
-                            <div class="col-xs-4 col-sm-4 col-md-4">
+                            <div class="col-xs-6 col-sm-6 col-md-6">
                                 <div class="form-group">
-                                    <strong>Email</strong>
+                                    <label>Email</label>
                                     {!! Form::text('email', null, ['placeholder' => 'Email', 'class' => 'form-control']) !!}
                                 </div>
                             </div>
+                            <div class="col-xs-6 col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    <label>Mobile Number</label>
+                                    {!! Form::tel('mobile_number', null, ['placeholder' => 'Mobile Number', 'class' => 'form-control']) !!}
+                                </div>
+                            </div>
+                            {{-- <div class="col-xs-4 col-sm-4 col-md-4">
+                                <div class="form-group">
+                                    <label>Emergency Number </label>
+                                    {!! Form::tel('emergency_number', null, ['placeholder' => 'Emergency Number', 'class' => 'form-control']) !!}
+                                </div>
+                            </div> --}}
+                        </div>
+                        <div class="row mt-2">
                             <div class="col-xs-4 col-sm-4 col-md-4">
                                 <div class="form-group">
-                                    <strong>Mobile Number</strong>
-                                    {!! Form::tel('mobile_number', null, ['placeholder' => 'Mobile Number', 'class' => 'form-control']) !!}
+                                    <label>Emmergence Relationship</label>
+                                    {!! Form::select('emergency_relation', emergencyRelation(), $user->emergency_relation, ['class' => 'form-select', 'placeholder' => 'Select Relation']) !!}
                                 </div>
                             </div>
                             <div class="col-xs-4 col-sm-4 col-md-4">
                                 <div class="form-group">
-                                    <strong>Emergency Number </strong>
+                                    <label>Emmergency Contact's Name</label>
+                                    {!! Form::text('emergency_name', null, ['placeholder' => 'Emergency Name', 'class' => 'form-control']) !!}
+                                </div>
+                            </div>
+                            <div class="col-xs-4 col-sm-4 col-md-4">
+                                <div class="form-group">
+                                    <label>Emergency Number </label>
                                     {!! Form::tel('emergency_number', null, ['placeholder' => 'Emergency Number', 'class' => 'form-control']) !!}
                                 </div>
                             </div>
@@ -137,19 +157,19 @@
                         <div class="row mt-2">
                             <div class="col-xs-4 col-sm-4 col-md-4">
                                 <div class="form-group">
-                                    <strong>Date of birth</strong>
+                                    <label>Date of birth</label>
                                     {!! Form::date('date_of_birth', null, ['placeholder' => 'Date of birth', 'class' => 'form-control']) !!}
                                 </div>
                             </div>
                             <div class="col-xs-4 col-sm-4 col-md-4">
                                 <div class="form-group">
-                                    <strong>Registration date</strong>
+                                    <label>Registration date</label>
                                     {!! Form::date('registration_date', null, ['placeholder' => 'Registration date', 'class' => 'form-control']) !!}
                                 </div>
                             </div>
                             <div class="col-xs-4 col-sm-4 col-md-4">
                                 <div class="form-group">
-                                    <strong>Occupation</strong>
+                                    <label>Occupation</label>
                                     {!! Form::text('occupation', null, ['placeholder' => 'Occupation', 'class' => 'form-control']) !!}
                                 </div>
                             </div>
@@ -157,19 +177,19 @@
                         <div class="row mt-2">
                             <div class="col-xs-4 col-sm-4 col-md-4">
                                 <div class="form-group">
-                                    <strong>Party Position</strong>
+                                    <label>Party Position</label>
                                     {!! Form::text('party_position', null, ['placeholder' => 'Party Position', 'class' => 'form-control']) !!}
                                 </div>
                             </div>
                             <div class="col-xs-4 col-sm-4 col-md-4">
                                 <div class="form-group">
-                                    <strong>Branch</strong>
+                                    <label>Branch</label>
                                     {!! Form::text('branch', null, ['placeholder' => 'Branch', 'class' => 'form-control']) !!}
                                 </div>
                             </div>
                             <div class="col-xs-4 col-sm-4 col-md-4">
                                 <div class="form-group">
-                                    <strong>Chapter</strong>
+                                    <label>Chapter</label>
                                     {!! Form::text('chapter', null, ['placeholder' => 'Chapter', 'class' => 'form-control']) !!}
                                 </div>
                             </div>
@@ -177,19 +197,19 @@
                         <div class="row mt-2">
                             <div class="col-xs-4 col-sm-4 col-md-4">
                                 <div class="form-group">
-                                    <strong>Membership Type</strong>
+                                    <label>Membership Type</label>
                                     {!! Form::select('membership_type', membershipType(), $user->membership_type, ['class' => 'form-select', 'placeholder' => 'Select Membership Type']) !!}
                                 </div>
                             </div>
                             <div class="col-xs-4 col-sm-4 col-md-4">
                                 <div class="form-group">
-                                    <strong>Membership Status</strong>
+                                    <label>Membership Status</label>
                                     {!! Form::select('status', membershipStatus(), $user->status, ['class' => 'form-select', 'placeholder' => 'Select Membership Status']) !!}
                                 </div>
                             </div>
                             <div class="col-xs-4 col-sm-4 col-md-4">
                                 <div class="form-group">
-                                    <strong>Is Volunteer</strong>
+                                    <label>Is Volunteer</label>
                                     {!! Form::select('volunteer', status(), $user->volunteer, ['class' => 'form-select', 'placeholder' => 'Select Option']) !!}
                                 </div>
                             </div>
@@ -197,33 +217,33 @@
                         <div class="row mt-2">
                             <div class="col-xs-8 col-sm-8 col-md-8">
                                 <div class="form-group">
-                                    <strong>Address</strong>
+                                    <label>Address</label>
                                     {!! Form::text('address', null, ['placeholder' => 'Address', 'class' => 'form-control']) !!}
                                 </div>
                             </div>
                             <div class="col-xs-4 col-sm-4 col-md-4">
                                 <div class="form-group">
-                                    <strong>City</strong>
-                                    {!! Form::tel('city', null, ['placeholder' => 'Mobile Number', 'class' => 'form-control']) !!}
+                                    <label>City</label>
+                                    {!! Form::text('city', null, ['placeholder' => 'City', 'class' => 'form-control']) !!}
                                 </div>
                             </div>
                         </div>
                         <div class="row mt-2">
                         <div class="col-xs-4 col-sm-4 col-md-4">
                             <div class="form-group">
-                                <strong>State </strong>
+                                <label>State </label>
                                 {!! Form::text('state', null, ['placeholder' => 'State', 'class' => 'form-control']) !!}
                             </div>
                         </div>
                             <div class="col-xs-4 col-sm-4 col-md-4">
                                 <div class="form-group">
-                                    <strong>Zip Code</strong>
+                                    <label>Zip Code</label>
                                     {!! Form::text('zipcode', null, ['placeholder' => 'zip Code', 'class' => 'form-control']) !!}
                                 </div>
                             </div>
                             <div class="col-xs-4 col-sm-4 col-md-4">
                                 <div class="form-group">
-                                    <strong>Country</strong>
+                                    <label>Country</label>
                                     {!! Form::select('country', $countries->pluck('name', 'id'), $user->country, ['placeholder' => 'Select Country','class' => 'form-control form-select', 'required']) !!}
                                 </div>
                             </div>
@@ -231,13 +251,13 @@
                         <div class="row mt-2">
                             <div class="col-xs-6 col-sm-6 col-md-6">
                                 <div class="form-group">
-                                    <strong>Password</strong>
+                                    <label>Password</label>
                                     {!! Form::password('password', ['placeholder' => 'Password', 'class' => 'form-control']) !!}
                                 </div>
                             </div>
                             <div class="col-xs-6 col-sm-6 col-md-6">
                                 <div class="form-group">
-                                    <strong>Confirm Password</strong>
+                                    <label>Confirm Password</label>
                                     {!! Form::password('password_confirmation', ['placeholder' => 'Confirm Password', 'class' => 'form-control']) !!}
                                 </div>
                             </div>
@@ -246,7 +266,7 @@
                         <div class="row mt-2">
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
-                                    <strong>Note</strong>
+                                    <label>Note</label>
                                     {!! Form::textarea('note', null, ['placeholder' => 'Note', 'class' => 'form-control', 'rows' => 3]) !!}
                                 </div>
                             </div>

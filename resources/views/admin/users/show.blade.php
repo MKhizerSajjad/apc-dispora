@@ -25,7 +25,7 @@
                         <div class="row">
                             <div class="offset-xs-5 offset-sm-5 offset-md-5 col-xs-2 col-sm-2 col-md-2 mb-3">
                                 <div class="form-group">
-                                    <img src="{{ asset('images/users/'.$user->picture) }}" onerror="this.onerror=null;this.src='{{ asset('admin/images/users/user-dummy-img.jpg') }}';"class="rounded-circle avatar-xl img-thumbnail user-profile-image" alt="{{$user->first_name}}">
+                                    <img src="{{ asset('images/users/'.$user->picture) }}" onerror="this.onerror=null;this.src='{{ asset('admin/images/users/user-dummy-img.jpg') }}';" class="rounded-circle avatar-xl img-thumbnail user-profile-image" alt="{{$user->first_name}}">
                                 </div>
                             </div>
                         </div>
@@ -51,21 +51,41 @@
                             </div>
                         </div>
                         <div class="row mt-2">
-                            <div class="col-xs-4 col-sm-4 col-md-4">
+                            <div class="col-xs-6 col-sm-6 col-md-6">
                                 <div class="form-group">
                                     <strong>Email</strong>
                                     {!! Form::text('email', $user->email, ['placeholder' => 'Email', 'class' => 'form-control', 'disabled' => 'disabled']) !!}
                                 </div>
                             </div>
-                            <div class="col-xs-4 col-sm-4 col-md-4">
+                            <div class="col-xs-6 col-sm-6 col-md-6">
                                 <div class="form-group">
                                     <strong>Mobile Number</strong>
                                     {!! Form::tel('mobile_number', $user->mobile_number, ['placeholder' => 'Mobile Number', 'class' => 'form-control', 'disabled' => 'disabled']) !!}
                                 </div>
                             </div>
-                            <div class="col-xs-4 col-sm-4 col-md-4">
+                            {{-- <div class="col-xs-4 col-sm-4 col-md-4">
                                 <div class="form-group">
                                     <strong>Emergency Number </strong>
+                                    {!! Form::tel('emergency_number', $user->emergency_number, ['placeholder' => 'Emergency Number', 'class' => 'form-control', 'disabled' => 'disabled']) !!}
+                                </div>
+                            </div> --}}
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-xs-4 col-sm-4 col-md-4">
+                                <div class="form-group">
+                                    <label>Emmergence Relationship</label>
+                                    {!! Form::select('emergency_relation', emergencyRelation(), $user->emergency_relation, ['class' => 'form-select', 'placeholder' => 'Select Relation', 'disabled' => 'disabled']) !!}
+                                </div>
+                            </div>
+                            <div class="col-xs-4 col-sm-4 col-md-4">
+                                <div class="form-group">
+                                    <label>Emmergency Contact's Name</label>
+                                    {!! Form::text('emergency_name', $user->emergency_name, ['placeholder' => 'Emergency Name', 'class' => 'form-control', 'disabled' => 'disabled']) !!}
+                                </div>
+                            </div>
+                            <div class="col-xs-4 col-sm-4 col-md-4">
+                                <div class="form-group">
+                                    <label>Emergency Number </label>
                                     {!! Form::tel('emergency_number', $user->emergency_number, ['placeholder' => 'Emergency Number', 'class' => 'form-control', 'disabled' => 'disabled']) !!}
                                 </div>
                             </div>
@@ -140,7 +160,7 @@
                             <div class="col-xs-4 col-sm-4 col-md-4">
                                 <div class="form-group">
                                     <strong>City</strong>
-                                    {!! Form::tel('city', $user->city, ['placeholder' => 'Mobile Number', 'class' => 'form-control', 'disabled' => 'disabled']) !!}
+                                    {!! Form::text('city', $user->city, ['placeholder' => 'City', 'class' => 'form-control', 'disabled' => 'disabled']) !!}
                                 </div>
                             </div>
                         </div>

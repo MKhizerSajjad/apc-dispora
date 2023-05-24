@@ -466,7 +466,7 @@
                                           <td class="srno"><a href="javascript:void(0);" onclick="ViewTickets(this)"
                                                   data-id="001" class="fw-medium link-primary">{{ ++$key }}</a>
                                           </td>
-                                          <td><img src="{{ asset('images/users/'.$user->picture) }}" onerror="this.onerror=null;this.src='{{ asset('admin/images/users/user-dummy-img.jpg') }}';"alt="{{ $user->first_name }}" class="avatar-xs rounded-circle me-2"></td>
+                                          <td><img src="{{ asset('images/users/'.$user->picture) }}" onerror="this.onerror=null;this.src='{{ asset('admin/images/users/user-dummy-img.jpg') }}';" alt="{{ $user->first_name }}" class="avatar-xs rounded-circle me-2"></td>
                                           <td class="name">{{ $user->first_name .' '. $user->last_name }}</td>
                                           <td class="email">{{ $user->email }}</td>
                                           <td class="status">{!! membershipStatus($user->status, 'badge') !!}</td>
