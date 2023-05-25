@@ -1,5 +1,14 @@
 <?php
 
+use App\Models\Countries;
+
+
+    function getCountries($title = null)
+    {
+        $countries = Countries::where('status', 'Active')->orderBy('name')->pluck('name', 'id');
+        return $countries;
+    }
+
     // function getGenrelStatus($status = null, $type= null)
     // {
     //     if(isset($type)) {
@@ -26,12 +35,12 @@
             'Mr' => 'Mr'    ,
             'Mrs' => 'Mrs'    ,
             'Miss' => 'Miss'  ,
-            'Doctor' => 'Doctor', 
+            'Doctor' => 'Doctor',
         ];
-        
+
         return $title;
     }
-    
+
     function membershipType($type = null)
     {
         $type = [
@@ -39,10 +48,10 @@
             'Honorary Foundation' => 'Honorary Foundation',
             'Honorary Executive' => 'Honorary Executive',
         ];
-        
+
         return $type;
     }
-    
+
     function emergencyRelation($type = null)
     {
         $type = [
@@ -56,10 +65,10 @@
             'Friend' => 'Friend',
             'Colleague' => 'Colleague',
         ];
-        
+
         return $type;
     }
-    
+
     function membershipStatus($status = null, $type= null)
     {
         if(isset($type)) {
@@ -77,21 +86,21 @@
                 'Expired' => 'Expired',
             ];
         }
-        
+
         if(isset($status) && $status != null) {
             return $response[$status];
         } else {
             return $response;
         }
     }
-    
+
     function status($status = null)
     {
         $status = [
             'Yes' => 'Yes',
             'No' => 'No',
         ];
-        
+
         return $status;
     }
 

@@ -38,7 +38,7 @@
                     <div class="card">
                         {{-- <div class="card-header">{{ __('Register') }}</div> --}}
 
-                        
+
                         <div class="step-arrow-nav mb-4" bis_skin_checked="1">
 
                             <ul class="nav nav-pills custom-nav nav-justified" role="tablist">
@@ -56,19 +56,19 @@
                                 </li>
                             </ul>
                         </div>
-                        
+
                         <div class="card-body">
-                            
+
                             <div class="text-center mt-2">
                                 <h5 class="text-primary">{{ __('Welcome !') }}</h5>
                                 <p class="text-muted">{{ __('Sign up to continue to portal') }}</p>
                             </div>
-                            
+
                             {!! Form::open(['route' => 'register', 'method' => 'POST', 'files' => true]) !!}
 
                                 {!! Form::hidden('user_type', 2, ['value' => 2]) !!}
 
-                                
+
                                 <div class="tab-content" bis_skin_checked="1">
                                     <div class="tab-pane fade active show" id="steparrow-gen-info" role="tabpanel" aria-labelledby="steparrow-gen-info-tab" bis_skin_checked="1">
 
@@ -208,7 +208,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        
+
                                         {{-- <div class="d-flex align-items-start gap-3 mt-4" bis_skin_checked="1">
                                             <button type="button" class="btn btn-light btn-label previestab" data-previous="steparrow-gen-info-tab"><i class="ri-arrow-left-line label-icon align-middle fs-16 me-2"></i> Back to General</button>
                                             <button type="button" class="btn btn-success btn-label right ms-auto nexttab nexttab" data-nexttab="pills-experience-tab"><i class="ri-arrow-right-line label-icon align-middle fs-16 ms-2"></i>Next</button>
@@ -226,7 +226,7 @@
                                             <div class="col-xs-4 col-sm-4 col-md-4">
                                                 <div class="form-group">
                                                     <label>City</label>
-                                                    {!! Form::text('city', $user->city, ['placeholder' => 'City', 'class' => 'form-control', 'disabled' => 'disabled']) !!}
+                                                    {!! Form::text('city', null, ['placeholder' => 'City', 'class' => 'form-control', 'disabled' => 'disabled']) !!}
                                                 </div>
                                             </div>
                                         </div>
@@ -246,9 +246,9 @@
                                             <div class="col-xs-4 col-sm-4 col-md-4">
                                                 <div class="form-group">
                                                     <label>Country</label>
-                                                    {!! Form::text('country', 1, ['placeholder' => 'zip Code', 'class' => 'form-control']) !!}
+                                                    {{-- {!! Form::text('country', 1, ['placeholder' => 'zip Code', 'class' => 'form-control']) !!} --}}
 
-                                                    {{-- {!! Form::select('country', $countries->pluck('name', 'id'), null, ['placeholder' => 'Select Country','class' => 'form-control form-select', 'required']) !!} --}}
+                                                    {!! Form::select('country', getCountries(), null, ['placeholder' => 'Select Country','class' => 'form-control form-select', 'required']) !!}
                                                 </div>
                                             </div>
                                         </div>
@@ -274,7 +274,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        
+
                                         {{-- <div class="d-flex align-items-start gap-3 mt-4" bis_skin_checked="1">
                                             <button type="button" class="btn btn-light btn-label previestab" data-previous="steparrow-gen-info-tab"><i class="ri-arrow-left-line label-icon align-middle fs-16 me-2"></i> Back to General</button>
                                             <button ype="submit" class="btn btn-success btn-label right ms-auto nexttab nexttab" data-nexttab="pills-experience-tab"><i class="ri-arrow-right-line label-icon align-middle fs-16 ms-2"></i>Signup</button>
