@@ -54,7 +54,7 @@ Route::group(['middleware' => ['auth']], function () { //'verified',
     Route::get('/home', function () {return view('admin.dashboard');})->name('home');
     Route::get('/dashboard', function () {return view('admin.dashboard');})->name('dashboard');
 
-    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     Route::resource('donations', DonationController::class);
     Route::resource('roles', RoleController::class);
