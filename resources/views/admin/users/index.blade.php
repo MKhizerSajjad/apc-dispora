@@ -474,6 +474,9 @@
                                             <a href="{{ route('users.edit', $user->id) }}">
                                                 <i class="ri-pencil-fill align-bottom me-2 text-muted"></i>
                                             </a>
+                                            <a href="https://wa.me/{{$user->mobile_number}}" target="_blank">
+                                                <i class="ri-whatsapp-fill align-bottom me-2 text-muted"></i>
+                                            </a>
                                             {{-- <a data-bs-toggle="modal" href="#deleteOrder">
                                                 <i class="ri-delete-bin-fill align-bottom me-2 text-muted"></i>
                                             </a> --}}
