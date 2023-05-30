@@ -12,7 +12,13 @@ class DashboardController extends Controller
     {
         if(Auth::user()->user_type == 1) {
 
-            $totalUsers = User::where('id', '!=', Auth::user()->id)->where('user_type', 2)->count();
+            // $totalUsers = User::where('id', '!=', Auth::user()->id)->where('user_type', 2)->count();
+            $totalUsers = User::where('id', '!=', Auth::user()->id)
+                  ->where('user_type', 2)
+                  ->groupBy('status')
+                  ->select('status', \DB::raw('count(*) as total'))
+                  ->get();
+
 
             $usersCountByMonth = User::where('id', '!=', Auth::user()->id)
             ->where('user_type', 2)
@@ -20,10 +26,11 @@ class DashboardController extends Controller
             ->groupBy('month')
             ->get();
 
-            dd("Users: " . $usersCountByMonth);
+            // dd("Users: " . $totalUsers);
+            return view('admin.dashboard', compact('totalUsers', 'usersCountByMonth'));
 
         } else {
-
+            return view('admin.dashboard');
         }
     }
 }
