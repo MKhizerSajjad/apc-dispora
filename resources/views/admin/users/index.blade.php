@@ -146,7 +146,7 @@
                                   <i class="ri-add-line align-bottom me-1"></i>
                                   Create Donor
                                 </a>
-                                
+
                                 @if (($filters))
                                     <a data-bs-toggle="modal" class="btn btn-soft-info" href="#fillterUser">
                                         <i class="ri-filter-2-line"></i>
@@ -167,7 +167,7 @@
                                             </div>
                                             {!! Form::open(['route' => 'users.index', 'method' => 'GET']) !!}
                                                 <div class="modal-body">
-                                                    <div class="row p-2">                                     
+                                                    <div class="row p-2">
                                                         <div class="row">
                                                             <div class="col-xs-4 col-sm-4 col-md-4">
                                                                 <div class="form-group">
@@ -441,50 +441,52 @@
                   <div class="card-body">
                     @if (count($data) > 0)
                       <div class="table-responsive table-card mb-4">
-                          <table class="table align-middle table-nowrap mb-0" id="ticketTable">
-                              <thead>
-                                  <tr>
-                                      {{-- <th scope="col" style="width: 40px;">
-                                          <div class="form-check">
-                                              <input class="form-check-input" type="checkbox" id="checkAll"
-                                                  value="option">
-                                          </div>
-                                      </th> --}}
-                                      
-                                      <th data-sort="srno">Sr#</th> {{-- class="sort" --}}
-                                      <th data-sort="name">Photo</th>
-                                      <th data-sort="name">Name</th>
-                                      <th data-sort="email">Email</th>
-                                      <th data-sort="status">Status</th>
-                                      <th data-sort="action">Action</th>
-                                  </tr>
-                              </thead>
-                              <tbody class="list form-check-all" id="ticket-list-data">
+                         <div id="buttons-datatables_wrapper" class="dataTables_wrapper dt-bootstrap5 no-footer">
+                        <table id="buttons-datatables" class="display table table-bordered dataTable no-footer" style="width: 100%;" aria-describedby="buttons-datatables_info">
+                                {{-- <table class="table align-middle table-nowrap mb-0" id="ticketTable"> --}}
+                            <thead>
+                                <tr>
+                                    {{-- <th scope="col" style="width: 40px;">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="checkAll"
+                                                value="option">
+                                        </div>
+                                    </th> --}}
 
-                                  @foreach ($data as $key => $user)
-                                      <tr>
-                                          <td class="srno"><a href="javascript:void(0);" onclick="ViewTickets(this)"
-                                                  data-id="001" class="fw-medium link-primary">{{ ++$key }}</a>
-                                          </td>
-                                          <td><img src="{{ asset('images/users/'.$user->picture) }}" onerror="this.onerror=null;this.src='{{ asset('admin/images/users/user-dummy-img.jpg') }}';" alt="{{ $user->first_name }}" class="avatar-xs rounded-circle me-2"></td>
-                                          <td class="name">{{ $user->first_name .' '. $user->last_name }}</td>
-                                          <td class="email">{{ $user->email }}</td>
-                                          <td class="status">{!! membershipStatus($user->status, 'badge') !!}</td>
-                                          <td>
-                                            <a href="{{ route('users.edit', $user->id) }}">
-                                                <i class="ri-pencil-fill align-bottom me-2 text-muted"></i>
-                                            </a>
-                                            <a href="https://wa.me/{{$user->mobile_number}}" target="_blank">
-                                                <i class="ri-whatsapp-fill align-bottom me-2 text-muted"></i>
-                                            </a>
-                                            {{-- <a data-bs-toggle="modal" href="#deleteOrder">
-                                                <i class="ri-delete-bin-fill align-bottom me-2 text-muted"></i>
-                                            </a> --}}
-                                          </td>
-                                      </tr>
-                                  @endforeach
-                              </tbody>
-                          </table>
+                                    <th data-sort="srno">Sr#</th> {{-- class="sort" --}}
+                                    <th data-sort="name">Photo</th>
+                                    <th data-sort="name">Name</th>
+                                    <th data-sort="email">Email</th>
+                                    <th data-sort="status">Status</th>
+                                    <th data-sort="action">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody class="list form-check-all" id="ticket-list-data">
+
+                                @foreach ($data as $key => $user)
+                                    <tr>
+                                        <td class="srno"><a href="javascript:void(0);" onclick="ViewTickets(this)"
+                                                data-id="001" class="fw-medium link-primary">{{ ++$key }}</a>
+                                        </td>
+                                        <td><img src="{{ asset('images/users/'.$user->picture) }}" onerror="this.onerror=null;this.src='{{ asset('admin/images/users/user-dummy-img.jpg') }}';" alt="{{ $user->first_name }}" class="avatar-xs rounded-circle me-2"></td>
+                                        <td class="name">{{ $user->first_name .' '. $user->last_name }}</td>
+                                        <td class="email">{{ $user->email }}</td>
+                                        <td class="status">{!! membershipStatus($user->status, 'badge') !!}</td>
+                                        <td>
+                                        <a href="{{ route('users.edit', $user->id) }}">
+                                            <i class="ri-pencil-fill align-bottom me-2 text-muted"></i>
+                                        </a>
+                                        <a href="https://wa.me/{{$user->mobile_number}}" target="_blank">
+                                            <i class="ri-whatsapp-fill align-bottom me-2 text-muted"></i>
+                                        </a>
+                                        {{-- <a data-bs-toggle="modal" href="#deleteOrder">
+                                            <i class="ri-delete-bin-fill align-bottom me-2 text-muted"></i>
+                                        </a> --}}
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
 
                           @if ($data->hasPages())
                             <div class="d-flex justify-content-end  mt-3 me-3">
