@@ -38,7 +38,7 @@ class UserController extends Controller
 
         
         $route = Route::current()->uri();
-        $users = User::where('id', '!=', Auth::user()->id)->where('user_type', 2)->orderBy('first_name','DESC');
+        $users = User::with('country')->where('id', '!=', Auth::user()->id)->where('user_type', 2)->orderBy('first_name','DESC');
 
         if ($request->has('title') && $request->title != '') {
             $title = $request->title;
@@ -47,27 +47,27 @@ class UserController extends Controller
         
         if ($request->has('first_name') && $request->first_name != '') {
             $first_name = $request->first_name;
-            $users = $users->where('first_name', $first_name);
+            $users = $users->where('first_name', 'LIKE', $first_name.'%');
         }
         
         if ($request->has('last_name') && $request->last_name != '') {
             $last_name = $request->last_name;
-            $users = $users->where('last_name', $last_name);
+            $users = $users->where('last_name', 'LIKE', $last_name.'%');
         }
         
         if ($request->has('email') && $request->email != '') {
             $email = $request->email;
-            $users = $users->where('email', $email);
+            $users = $users->where('email', 'LIKE', $email.'%');
         }
         
         if ($request->has('mobile_number') && $request->mobile_number != '') {
             $mobile_number = $request->mobile_number;
-            $users = $users->where('mobile_number', $mobile_number);
+            $users = $users->where('mobile_number', 'LIKE', $mobile_number.'%');
         }
         
         if ($request->has('emergency_number') && $request->emergency_number != '') {
             $emergency_number = $request->emergency_number;
-            $users = $users->where('emergency_number', $emergency_number);
+            $users = $users->where('emergency_number','LIKE', $emergency_number);
         }
 
         if ($request->has('date_of_birth') && $request->date_of_birth != '') {
@@ -82,17 +82,17 @@ class UserController extends Controller
 
         if ($request->has('occupation') && $request->occupation != '') {
             $occupation = $request->occupation;
-            $users = $users->where('occupation', $occupation);
+            $users = $users->where('occupation', 'LIKE', '%'.$occupation.'%');
         }
 
         if ($request->has('party_position') && $request->party_position != '') {
             $party_position = $request->party_position;
-            $users = $users->where('party_position', $party_position);
+            $users = $users->where('party_position', 'LIKE', $party_position.'%');
         }
 
         if ($request->has('branch') && $request->branch != '') {
             $branch = $request->branch;
-            $users = $users->where('branch', $branch);
+            $users = $users->where('branch', 'LIKE', $branch.'%');
         }
 
         if ($request->has('membership_type') && $request->membership_type != '') {
@@ -112,22 +112,22 @@ class UserController extends Controller
 
         if ($request->has('address') && $request->address != '') {
             $address = $request->address;
-            $users = $users->where('address', $address);
+            $users = $users->where('address', 'LIKE', '%'.$address.'%');
         }
 
         if ($request->has('city') && $request->city != '') {
             $city = $request->city;
-            $users = $users->where('city', $city);
+            $users = $users->where('city', 'LIKE', '%'.$city.'%');
         }
 
         if ($request->has('state') && $request->state != '') {
             $state = $request->state;
-            $users = $users->where('state', $state);
+            $users = $users->where('state', 'LIKE', '%'.$state.'%');
         }
 
         if ($request->has('zipcode') && $request->zipcode != '') {
             $zipcode = $request->zipcode;
-            $users = $users->where('zipcode', $zipcode);
+            $users = $users->where('zipcode', 'LIKE', '%'.$zipcode.'%');
         }
         
         if ($request->has('country') && $request->country != '') {
