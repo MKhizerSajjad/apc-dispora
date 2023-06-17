@@ -35,112 +35,114 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
+        if(Auth::user()->user_type == 1) {
+            $route = Route::current()->uri();
+            $users = User::with('countries:id,name')->where('id', '!=', Auth::user()->id)->where('user_type', 2)->orderBy('first_name','DESC');
 
-        
-        $route = Route::current()->uri();
-        $users = User::with('countries:id,name')->where('id', '!=', Auth::user()->id)->where('user_type', 2)->orderBy('first_name','DESC');
+            if ($request->has('title') && $request->title != '') {
+                $title = $request->title;
+                $users = $users->where('title', $title);
+            }
+            
+            if ($request->has('first_name') && $request->first_name != '') {
+                $first_name = $request->first_name;
+                $users = $users->where('first_name', 'LIKE', $first_name.'%');
+            }
+            
+            if ($request->has('last_name') && $request->last_name != '') {
+                $last_name = $request->last_name;
+                $users = $users->where('last_name', 'LIKE', $last_name.'%');
+            }
+            
+            if ($request->has('email') && $request->email != '') {
+                $email = $request->email;
+                $users = $users->where('email', 'LIKE', $email.'%');
+            }
+            
+            if ($request->has('mobile_number') && $request->mobile_number != '') {
+                $mobile_number = $request->mobile_number;
+                $users = $users->where('mobile_number', 'LIKE', $mobile_number.'%');
+            }
+            
+            if ($request->has('emergency_number') && $request->emergency_number != '') {
+                $emergency_number = $request->emergency_number;
+                $users = $users->where('emergency_number','LIKE', $emergency_number);
+            }
 
-        if ($request->has('title') && $request->title != '') {
-            $title = $request->title;
-            $users = $users->where('title', $title);
-        }
-        
-        if ($request->has('first_name') && $request->first_name != '') {
-            $first_name = $request->first_name;
-            $users = $users->where('first_name', 'LIKE', $first_name.'%');
-        }
-        
-        if ($request->has('last_name') && $request->last_name != '') {
-            $last_name = $request->last_name;
-            $users = $users->where('last_name', 'LIKE', $last_name.'%');
-        }
-        
-        if ($request->has('email') && $request->email != '') {
-            $email = $request->email;
-            $users = $users->where('email', 'LIKE', $email.'%');
-        }
-        
-        if ($request->has('mobile_number') && $request->mobile_number != '') {
-            $mobile_number = $request->mobile_number;
-            $users = $users->where('mobile_number', 'LIKE', $mobile_number.'%');
-        }
-        
-        if ($request->has('emergency_number') && $request->emergency_number != '') {
-            $emergency_number = $request->emergency_number;
-            $users = $users->where('emergency_number','LIKE', $emergency_number);
-        }
+            if ($request->has('date_of_birth') && $request->date_of_birth != '') {
+                $date_of_birth = $request->date_of_birth;
+                $users = $users->where('date_of_birth', $date_of_birth);
+            }
 
-        if ($request->has('date_of_birth') && $request->date_of_birth != '') {
-            $date_of_birth = $request->date_of_birth;
-            $users = $users->where('date_of_birth', $date_of_birth);
-        }
+            if ($request->has('registration_date') && $request->registration_date != '') {
+                $registration_date = $request->registration_date;
+                $users = $users->where('registration_date', $registration_date);
+            }
 
-        if ($request->has('registration_date') && $request->registration_date != '') {
-            $registration_date = $request->registration_date;
-            $users = $users->where('registration_date', $registration_date);
-        }
+            if ($request->has('occupation') && $request->occupation != '') {
+                $occupation = $request->occupation;
+                $users = $users->where('occupation', 'LIKE', '%'.$occupation.'%');
+            }
 
-        if ($request->has('occupation') && $request->occupation != '') {
-            $occupation = $request->occupation;
-            $users = $users->where('occupation', 'LIKE', '%'.$occupation.'%');
-        }
+            if ($request->has('party_position') && $request->party_position != '') {
+                $party_position = $request->party_position;
+                $users = $users->where('party_position', 'LIKE', $party_position.'%');
+            }
 
-        if ($request->has('party_position') && $request->party_position != '') {
-            $party_position = $request->party_position;
-            $users = $users->where('party_position', 'LIKE', $party_position.'%');
-        }
+            if ($request->has('branch') && $request->branch != '') {
+                $branch = $request->branch;
+                $users = $users->where('branch', 'LIKE', $branch.'%');
+            }
 
-        if ($request->has('branch') && $request->branch != '') {
-            $branch = $request->branch;
-            $users = $users->where('branch', 'LIKE', $branch.'%');
-        }
+            if ($request->has('membership_type') && $request->membership_type != '') {
+                $membership_type = $request->membership_type;
+                $users = $users->where('membership_type', $membership_type);
+            }
 
-        if ($request->has('membership_type') && $request->membership_type != '') {
-            $membership_type = $request->membership_type;
-            $users = $users->where('membership_type', $membership_type);
-        }
+            if ($request->has('status') && $request->status != '') {
+                $status = $request->status;
+                $users = $users->where('status', $status);
+            }
 
-        if ($request->has('status') && $request->status != '') {
-            $status = $request->status;
-            $users = $users->where('status', $status);
-        }
+            if ($request->has('volunteer') && $request->volunteer != '') {
+                $volunteer = $request->volunteer;
+                $users = $users->where('volunteer', $volunteer);
+            }
 
-        if ($request->has('volunteer') && $request->volunteer != '') {
-            $volunteer = $request->volunteer;
-            $users = $users->where('volunteer', $volunteer);
-        }
+            if ($request->has('address') && $request->address != '') {
+                $address = $request->address;
+                $users = $users->where('address', 'LIKE', '%'.$address.'%');
+            }
 
-        if ($request->has('address') && $request->address != '') {
-            $address = $request->address;
-            $users = $users->where('address', 'LIKE', '%'.$address.'%');
-        }
+            if ($request->has('city') && $request->city != '') {
+                $city = $request->city;
+                $users = $users->where('city', 'LIKE', '%'.$city.'%');
+            }
 
-        if ($request->has('city') && $request->city != '') {
-            $city = $request->city;
-            $users = $users->where('city', 'LIKE', '%'.$city.'%');
-        }
+            if ($request->has('state') && $request->state != '') {
+                $state = $request->state;
+                $users = $users->where('state', 'LIKE', '%'.$state.'%');
+            }
 
-        if ($request->has('state') && $request->state != '') {
-            $state = $request->state;
-            $users = $users->where('state', 'LIKE', '%'.$state.'%');
-        }
+            if ($request->has('zipcode') && $request->zipcode != '') {
+                $zipcode = $request->zipcode;
+                $users = $users->where('zipcode', 'LIKE', '%'.$zipcode.'%');
+            }
+            
+            if ($request->has('country') && $request->country != '') {
+                $country = $request->country;
+                $users = $users->where('country', $country);
+            }
 
-        if ($request->has('zipcode') && $request->zipcode != '') {
-            $zipcode = $request->zipcode;
-            $users = $users->where('zipcode', 'LIKE', '%'.$zipcode.'%');
-        }
-        
-        if ($request->has('country') && $request->country != '') {
-            $country = $request->country;
-            $users = $users->where('country', $country);
-        }
+            $data = $users->paginate(10);
+            $countries = Countries::where('status', 'Active')->orderBy('name')->get();
+            $filters = $request->all();
 
-        $data = $users->paginate(10);
-        $countries = Countries::where('status', 'Active')->orderBy('name')->get();
-        $filters = $request->all();
-
-        return view('admin.users.index',compact('data', 'countries', 'filters'))
-            ->with('i', ($request->input('page', 1) - 1) * 10);
+            return view('admin.users.index',compact('data', 'countries', 'filters'))
+                ->with('i', ($request->input('page', 1) - 1) * 10);
+        } else {
+            return redirect()->route('users.show', ['user' => Auth::user()->id]);
+        }
     }
 
     /**
@@ -272,28 +274,39 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, User $user)
-    {        
-        $this->validate($request, [
-            'picture' => 'file|mimes:jpeg,jpg,gif,png|max:2048',
-            'title' => 'required',
-            'first_name' => 'required|regex:/^[\pL\s]+$/u',
-            'last_name' => 'required|regex:/^[\pL\s]+$/u',
-            'email' => 'required|email|max:255|unique:users,email,'.$user->id,
-            'mobile_number' => 'min:12|max:18|unique:users,mobile_number,'.$user->id,
-            'emergency_number' => 'required|min:10|max:18|unique:users,emergency_number,'.$user->id,
-            'date_of_birth' => 'required',
-            'registration_date' => 'required',
-            'occupation' => 'required',
-            'party_position' => 'required',
-            'branch' => 'required',
-            'chapter' => 'required',
-            'membership_type' => 'required',
-            'status' => 'required',
-            'password' => 'nullable|string|min:8|confirmed',
-        ]);
-
-        $data = $request->all();
+    {       
+        if(Auth::user()->user_type == 1) {
+            $redirectionURL = "'users.index'";
+            $this->validate($request, [
+                'picture' => 'file|mimes:jpeg,jpg,gif,png|max:2048',
+                'title' => 'required',
+                'first_name' => 'required|regex:/^[\pL\s]+$/u',
+                'last_name' => 'required|regex:/^[\pL\s]+$/u',
+                'email' => 'required|email|max:255|unique:users,email,'.$user->id,
+                'mobile_number' => 'min:12|max:18|unique:users,mobile_number,'.$user->id,
+                'emergency_number' => 'required|min:10|max:18|unique:users,emergency_number,'.$user->id,
+                'date_of_birth' => 'required',
+                'registration_date' => 'required',
+                'occupation' => 'required',
+                'party_position' => 'required',
+                'branch' => 'required',
+                'chapter' => 'required',
+                'membership_type' => 'required',
+                'status' => 'required',
+                'password' => 'nullable|string|min:8|confirmed',
+            ]);
+        } else {
+            $redirectionURL = "'users.show', ['user' => Auth::user()->id]";
+            $this->validate($request, [
+                'picture' => 'file|mimes:jpeg,jpg,gif,png|max:2048',
+                'mobile_number' => 'min:12|max:18|unique:users,mobile_number,'.$user->id,
+                'emergency_number' => 'required|min:10|max:18|unique:users,emergency_number,'.$user->id,
+                'occupation' => 'required',
+                'password' => 'nullable|string|min:8|confirmed',
+            ]);
+        }
         
+        $data = $request->all();
         // Picture
         if (isset($data['picture'])) {
             $imageStorage = public_path('images/users');
@@ -314,7 +327,6 @@ class UserController extends Controller
         }
 
         if(!empty($data['password'])){
-            dd('aa');
             $data['password'] = Hash::make($data['password']);
         }else{
             $data = Arr::except($data,array('password'));
@@ -324,8 +336,7 @@ class UserController extends Controller
         $user = User::find($user->id);
         $user->update($data);
 
-        return redirect()->route('users.index')
-                        ->with('success','User updated successfully');
+        return redirect()->route($redirectionURL)->with('success','User updated successfully');
     }
 
     /**
