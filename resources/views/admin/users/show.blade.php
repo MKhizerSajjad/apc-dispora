@@ -25,8 +25,8 @@
                     <div class="d-flex align-items-center">
                         <h5 class="card-title mb-0 flex-grow-1">My Profile</h5>
                         <div class="flex-shrink-0">
-                          <a href="{{ route('users.create') }}" class="btn btn-danger add-btn">
-                            <i class="ri-add-line align-bottom me-1"></i>
+                          <a href="{{ route('users.edit', $user->id) }}" class="btn btn-danger add-btn">
+                            <i class="ri-edit-line align-bottom me-1"></i>
                             Update My Profile
                           </a>
                         </div>
@@ -195,14 +195,14 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row mt-2">
+                        {{-- <div class="row mt-2">
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
                                     <strong>Note</strong>
                                     {!! Form::textarea('note', $user->note, ['placeholder' => 'Note', 'class' => 'form-control', 'rows' => 3, 'disabled' => 'disabled']) !!}
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>

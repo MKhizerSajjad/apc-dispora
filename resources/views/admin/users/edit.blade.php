@@ -98,19 +98,19 @@
                             <div class="col-xs-4 col-sm-4 col-md-4">
                                 <div class="form-group">
                                     <label>Title</label>
-                                    {!! Form::select('title', userTitles(), $user->title, ['class' => 'form-select', 'placeholder' => 'Select Title']) !!}
+                                    {!! Form::select('title', userTitles(), $user->title, ['class' => 'form-select', 'placeholder' => 'Select Title', 'disabled' => 'disabled']) !!}
                                 </div>
                             </div>
                             <div class="col-xs-4 col-sm-4 col-md-4">
                                 <div class="form-group">
                                     <label>First Name</label>
-                                    {!! Form::text('first_name', null, ['placeholder' => 'First Name', 'class' => 'form-control']) !!}
+                                    {!! Form::text('first_name', null, ['placeholder' => 'First Name', 'class' => 'form-control', 'disabled' => 'disabled']) !!}
                                 </div>
                             </div>
                             <div class="col-xs-4 col-sm-4 col-md-4">
                                 <div class="form-group">
                                     <label>Last Name</label>
-                                    {!! Form::text('last_name', null, ['placeholder' => 'Last Name', 'class' => 'form-control']) !!}
+                                    {!! Form::text('last_name', null, ['placeholder' => 'Last Name', 'class' => 'form-control', 'disabled' => 'disabled']) !!}
                                 </div>
                             </div>
                         </div>
@@ -118,7 +118,7 @@
                             <div class="col-xs-6 col-sm-6 col-md-6">
                                 <div class="form-group">
                                     <label>Email</label>
-                                    {!! Form::text('email', null, ['placeholder' => 'Email', 'class' => 'form-control']) !!}
+                                    {!! Form::text('email', null, ['placeholder' => 'Email', 'class' => 'form-control', 'disabled' => 'disabled']) !!}
                                 </div>
                             </div>
                             <div class="col-xs-6 col-sm-6 col-md-6">
@@ -158,13 +158,13 @@
                             <div class="col-xs-4 col-sm-4 col-md-4">
                                 <div class="form-group">
                                     <label>Date of birth</label>
-                                    {!! Form::date('date_of_birth', null, ['placeholder' => 'Date of birth', 'class' => 'form-control']) !!}
+                                    {!! Form::date('date_of_birth', null, ['placeholder' => 'Date of birth', 'class' => 'form-control', 'disabled' => 'disabled']) !!}
                                 </div>
                             </div>
                             <div class="col-xs-4 col-sm-4 col-md-4">
                                 <div class="form-group">
                                     <label>Registration date</label>
-                                    {!! Form::date('registration_date', null, ['placeholder' => 'Registration date', 'class' => 'form-control']) !!}
+                                    {!! Form::date('registration_date', null, ['placeholder' => 'Registration date', 'class' => 'form-control', 'disabled' => 'disabled']) !!}
                                 </div>
                             </div>
                             <div class="col-xs-4 col-sm-4 col-md-4">
@@ -178,19 +178,19 @@
                             <div class="col-xs-4 col-sm-4 col-md-4">
                                 <div class="form-group">
                                     <label>Party Position</label>
-                                    {!! Form::text('party_position', null, ['placeholder' => 'Party Position', 'class' => 'form-control']) !!}
+                                    {!! Form::text('party_position', null, ['placeholder' => 'Party Position', 'class' => 'form-control', 'disabled' => 'disabled']) !!}
                                 </div>
                             </div>
                             <div class="col-xs-4 col-sm-4 col-md-4">
                                 <div class="form-group">
                                     <label>Branch</label>
-                                    {!! Form::text('branch', null, ['placeholder' => 'Branch', 'class' => 'form-control']) !!}
+                                    {!! Form::text('branch', null, ['placeholder' => 'Branch', 'class' => 'form-control', 'disabled' => 'disabled']) !!}
                                 </div>
                             </div>
                             <div class="col-xs-4 col-sm-4 col-md-4">
                                 <div class="form-group">
                                     <label>Chapter</label>
-                                    {!! Form::text('chapter', null, ['placeholder' => 'Chapter', 'class' => 'form-control']) !!}
+                                    {!! Form::text('chapter', null, ['placeholder' => 'Chapter', 'class' => 'form-control', 'disabled' => 'disabled']) !!}
                                 </div>
                             </div>
                         </div>
@@ -198,19 +198,19 @@
                             <div class="col-xs-4 col-sm-4 col-md-4">
                                 <div class="form-group">
                                     <label>Membership Type</label>
-                                    {!! Form::select('membership_type', membershipType(), $user->membership_type, ['class' => 'form-select', 'placeholder' => 'Select Membership Type']) !!}
+                                    {!! Form::select('membership_type', membershipType(), $user->membership_type, ['class' => 'form-select', 'placeholder' => 'Select Membership Type', 'disabled' => 'disabled']) !!}
                                 </div>
                             </div>
                             <div class="col-xs-4 col-sm-4 col-md-4">
                                 <div class="form-group">
                                     <label>Membership Status</label>
-                                    {!! Form::select('status', membershipStatus(), $user->status, ['class' => 'form-select', 'placeholder' => 'Select Membership Status']) !!}
+                                    {!! Form::select('status', membershipStatus(), $user->status, ['class' => 'form-select', 'placeholder' => 'Select Membership Status', 'disabled' => 'disabled']) !!}
                                 </div>
                             </div>
                             <div class="col-xs-4 col-sm-4 col-md-4">
                                 <div class="form-group">
                                     <label>Is Volunteer</label>
-                                    {!! Form::select('volunteer', status(), $user->volunteer, ['class' => 'form-select', 'placeholder' => 'Select Option']) !!}
+                                    {!! Form::select('volunteer', status(), $user->volunteer, ['class' => 'form-select', 'placeholder' => 'Select Option', 'disabled' => 'disabled']) !!}
                                 </div>
                             </div>
                         </div>
@@ -263,14 +263,14 @@
                             </div>
                             <span class="text text-danger">Only input password if you want to update it.</span>
                         </div>
-                        <div class="row mt-2">
+                        {{-- <div class="row mt-2">
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
                                     <label>Note</label>
                                     {!! Form::textarea('note', null, ['placeholder' => 'Note', 'class' => 'form-control', 'rows' => 3]) !!}
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="row">
                             <div class="text-end mt-4 pe-3">
                                 <a href="{{ route('users.index') }}" class="btn btn-primary w-sm">Cancal</a>
