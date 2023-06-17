@@ -1,7 +1,7 @@
 
-<div class="app-menu navbar-menu">
+<div class="app-menu navbar-menu" style="background: #ea3424; color: white;">
     <!-- LOGO -->
-    <div class="navbar-brand-box">
+    <div class="navbar-brand-box" style="background: #ea3424; color: white;">
         <!-- Dark Logo-->
         <a href="{{route('dashboard')}}" class="logo logo-dark">
             <span class="logo-sm">

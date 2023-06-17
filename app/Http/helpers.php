@@ -74,14 +74,14 @@ use App\Models\Countries;
         if(isset($type)) {
             $response = [
                 'Active' => '<span class="badge badge-soft-info">Active</span>',
-                'Dominant' => '<span class="badge badge-soft-success">Dominant</span>',
+                'Dormant' => '<span class="badge badge-soft-success">Dormant</span>',
                 'Inactive' => '<span class="badge badge-soft-warning">Inactive</span>',
                 'Expired' => '<span class="badge badge-soft-danger">Expired</span>'
             ];
         } else {
             $response = [
                 'Active' => 'Active',
-                'Dominant' => 'Dominant',
+                'Dormant' => 'Dormant',
                 'Inactive' => 'Inactive',
                 'Expired' => 'Expired',
             ];

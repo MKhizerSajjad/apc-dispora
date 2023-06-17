@@ -15,7 +15,7 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->enum('status',['Active', 'Dominant', 'Inactive','Expired'])->default('Active');
+            $table->enum('status',['Active', 'Dormant', 'Inactive','Expired'])->default('Active');
             $table->integer('user_type')->default(2); // admin, customer
             $table->enum('title',['Mr', 'Mrs', 'Miss','Doctor'])->default('Mr');
             $table->string('first_name', 20);

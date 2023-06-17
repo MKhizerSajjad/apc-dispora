@@ -68,6 +68,17 @@
 
                                 {!! Form::hidden('user_type', 2, ['value' => 2]) !!}
 
+                                @if (count($errors) > 0)
+                                    <div class="alert alert-danger alert-border-left alert-dismissible fade show auto-colse-10">
+                                        <label>Whoops!</label> There were some problems with your input.<br><br>
+                                        <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                        </ul>
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                    </div>
+                                @endif
 
                                 <div class="tab-content" bis_skin_checked="1">
                                     <div class="tab-pane fade active show" id="steparrow-gen-info" role="tabpanel" aria-labelledby="steparrow-gen-info-tab" bis_skin_checked="1">
@@ -226,7 +237,7 @@
                                             <div class="col-xs-4 col-sm-4 col-md-4">
                                                 <div class="form-group">
                                                     <label>City</label>
-                                                    {!! Form::text('city', null, ['placeholder' => 'City', 'class' => 'form-control', 'disabled' => 'disabled']) !!}
+                                                    {!! Form::text('city', null, ['placeholder' => 'City', 'class' => 'form-control']) !!}
                                                 </div>
                                             </div>
                                         </div>
@@ -266,14 +277,14 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row mt-2">
+                                        {{-- <div class="row mt-2">
                                             <div class="col-xs-12 col-sm-12 col-md-12">
                                                 <div class="form-group">
                                                     <label>Note</label>
                                                     {!! Form::textarea('note', null, ['placeholder' => 'Note', 'class' => 'form-control', 'rows' => 3]) !!}
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> --}}
 
                                         {{-- <div class="d-flex align-items-start gap-3 mt-4" bis_skin_checked="1">
                                             <button type="button" class="btn btn-light btn-label previestab" data-previous="steparrow-gen-info-tab"><i class="ri-arrow-left-line label-icon align-middle fs-16 me-2"></i> Back to General</button>

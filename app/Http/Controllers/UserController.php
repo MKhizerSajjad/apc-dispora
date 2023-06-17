@@ -38,7 +38,7 @@ class UserController extends Controller
 
         
         $route = Route::current()->uri();
-        $users = User::with('country')->where('id', '!=', Auth::user()->id)->where('user_type', 2)->orderBy('first_name','DESC');
+        $users = User::with('countries:id,name')->where('id', '!=', Auth::user()->id)->where('user_type', 2)->orderBy('first_name','DESC');
 
         if ($request->has('title') && $request->title != '') {
             $title = $request->title;

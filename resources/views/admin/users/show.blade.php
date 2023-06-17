@@ -21,6 +21,17 @@
         
             <div class="col-lg-12">
                 <div class="card">
+                    <div class="card-header border-0">
+                    <div class="d-flex align-items-center">
+                        <h5 class="card-title mb-0 flex-grow-1">My Profile</h5>
+                        <div class="flex-shrink-0">
+                          <a href="{{ route('users.create') }}" class="btn btn-danger add-btn">
+                            <i class="ri-add-line align-bottom me-1"></i>
+                            Update My Profile
+                          </a>
+                        </div>
+                    </div>
+                    </div>
                     <div class="card-body">                        
                         <div class="row">
                             <div class="offset-xs-5 offset-sm-5 offset-md-5 col-xs-2 col-sm-2 col-md-2 mb-3">

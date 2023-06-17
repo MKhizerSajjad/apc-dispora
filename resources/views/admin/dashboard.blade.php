@@ -116,7 +116,7 @@ $results = [
                                                 <div class="flex-grow-1 overflow-hidden">
                                                     <p
                                                         class="text-uppercase fw-medium text-muted text-truncate mb-0">
-                                                        Dominant Users</p>
+                                                        Dormant Users</p>
                                                 </div>
                                                 <div class="flex-shrink-0">
                                                     <h5 class="text-danger fs-14 mb-0">
@@ -129,7 +129,7 @@ $results = [
                                                 <div>
                                                     <h4 class="fs-22 fw-semibold ff-secondary mb-4"><span
                                                             class="counter-value" data-target="1">0</span></h4>
-                                                    <a href="{{route('users.index', ['status' => 'Dominant'])}}" class="text-decoration-underline">View dominant users</a>
+                                                    <a href="{{route('users.index', ['status' => 'Dormant'])}}" class="text-decoration-underline">View Dormant users</a>
                                                 </div>
                                                 <div class="avatar-sm flex-shrink-0">
                                                     <span class="avatar-title bg-soft-success rounded fs-3">
