@@ -251,7 +251,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        if(Auth::user()->user_type != 1) {
+        if(Auth::user()->user_type != 1 && Auth::user()->id != $user->id) {
             return redirect()->route('users.show', ['user' => Auth::user()->id]);
         }
 

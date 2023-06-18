@@ -245,4 +245,77 @@
     </div>
   </div>
 
+    @php
+        function userTitles($title = null)
+        {
+            $title = [
+                'Mr' => 'Mr'    ,
+                'Mrs' => 'Mrs'    ,
+                'Miss' => 'Miss'  ,
+                'Doctor' => 'Doctor',
+            ];
+
+            return $title;
+        }
+        function membershipType($type = null)
+        {
+            $type = [
+                'Ordinary' => 'Ordinary',
+                'Honorary Foundation' => 'Honorary Foundation',
+                'Honorary Executive' => 'Honorary Executive',
+            ];
+
+            return $type;
+        }
+
+        function membershipStatus($status = null, $type= null)
+        {
+            if(isset($type)) {
+                $response = [
+                    'Active' => '<span class="badge badge-soft-info">Active</span>',
+                    'Dormant' => '<span class="badge badge-soft-success">Dormant</span>',
+                    'Inactive' => '<span class="badge badge-soft-warning">Inactive</span>',
+                    'Expired' => '<span class="badge badge-soft-danger">Expired</span>'
+                ];
+            } else {
+                $response = [
+                    'Active' => 'Active',
+                    'Dormant' => 'Dormant',
+                    'Inactive' => 'Inactive',
+                    'Expired' => 'Expired',
+                ];
+            }
+
+            if(isset($status) && $status != null) {
+                return $response[$status];
+            } else {
+                return $response;
+            }
+        }
+        function emergencyRelation($type = null)
+        {
+            $type = [
+                'Husband' => 'Husband',
+                'Wife' => 'Wife',
+                'Partner' => 'Partner',
+                'Father' => 'Father',
+                'Mother' => 'Mother',
+                'Sister' => 'Sister',
+                'Brother' => 'Brother',
+                'Friend' => 'Friend',
+                'Colleague' => 'Colleague',
+            ];
+
+            return $type;
+        }
+        function status($status = null)
+        {
+            $status = [
+                'Yes' => 'Yes',
+                'No' => 'No',
+            ];
+
+            return $status;
+        } 
+    @endphp
 @endsection

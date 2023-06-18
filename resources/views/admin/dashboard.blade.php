@@ -276,68 +276,30 @@ $results = [
         <!-- container-fluid -->
     </div>
 
-
-    <script>
-        // $(document).ready(function () {
-        //     showGraph();
-        // });
-
-
-        // function showGraph()
-        // {
-            var options = {
-            series: [{
-                name: 'Net Profit',
-                data: [44, 55, 57, 56, 61, 58, 63, 60, 66]
-            }, {
-                name: 'Revenue',
-                data: [76, 85, 101, 98, 87, 105, 91, 114, 94]
-            }, {
-                name: 'Free Cash Flow',
-                data: [35, 41, 36, 26, 45, 48, 52, 53, 41]
-            }],
-            chart: {
-                type: 'bar',
-                height: 350
-            },
-            plotOptions: {
-            bar: {
-                horizontal: false,
-                columnWidth: '55%',
-                endingShape: 'rounded'
-            },
-            },
-        dataLabels: {
-          enabled: false
-        },
-        stroke: {
-          show: true,
-          width: 2,
-          colors: ['transparent']
-        },
-        xaxis: {
-          categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct'],
-        },
-        yaxis: {
-          title: {
-            text: '$ (thousands)'
-          }
-        },
-        fill: {
-          opacity: 1
-        },
-        tooltip: {
-          y: {
-            formatter: function (val) {
-              return "$ " + val + " thousands"
+    @php
+        function membershipStatus($status = null, $type= null)
+        {
+            if(isset($type)) {
+                $response = [
+                    'Active' => '<span class="badge badge-soft-info">Active</span>',
+                    'Dormant' => '<span class="badge badge-soft-success">Dormant</span>',
+                    'Inactive' => '<span class="badge badge-soft-warning">Inactive</span>',
+                    'Expired' => '<span class="badge badge-soft-danger">Expired</span>'
+                ];
+            } else {
+                $response = [
+                    'Active' => 'Active',
+                    'Dormant' => 'Dormant',
+                    'Inactive' => 'Inactive',
+                    'Expired' => 'Expired',
+                ];
             }
-          }
+
+            if(isset($status) && $status != null) {
+                return $response[$status];
+            } else {
+                return $response;
+            }
         }
-        };
-
-        var chart = new ApexCharts(document.querySelector("#chart"), options);
-        chart.render();
-      
-        // }
-
+    @endphp
 @endsection

@@ -3,11 +3,11 @@
 use App\Models\Countries;
 
 
-    function getCountries($title = null)
-    {
-        $countries = Countries::where('status', 'Active')->orderBy('name')->pluck('name', 'id');
-        return $countries;
-    }
+    // function getCountries($title = null)
+    // {
+    //     $countries = Countries::where('status', 'Active')->orderBy('name')->pluck('name', 'id');
+    //     return $countries;
+    // }
 
     // function getGenrelStatus($status = null, $type= null)
     // {
@@ -29,102 +29,80 @@ use App\Models\Countries;
     //     }
     // }
 
-    function userTitles($title = null)
-    {
-        $title = [
-            'Mr' => 'Mr'    ,
-            'Mrs' => 'Mrs'    ,
-            'Miss' => 'Miss'  ,
-            'Doctor' => 'Doctor',
-        ];
+    // function userTitles($title = null)
+    // {
+    //     $title = [
+    //         'Mr' => 'Mr'    ,
+    //         'Mrs' => 'Mrs'    ,
+    //         'Miss' => 'Miss'  ,
+    //         'Doctor' => 'Doctor',
+    //     ];
 
-        return $title;
-    }
+    //     return $title;
+    // }
 
-    function membershipType($type = null)
-    {
-        $type = [
-            'Ordinary' => 'Ordinary',
-            'Honorary Foundation' => 'Honorary Foundation',
-            'Honorary Executive' => 'Honorary Executive',
-        ];
+    // function membershipType($type = null)
+    // {
+    //     $type = [
+    //         'Ordinary' => 'Ordinary',
+    //         'Honorary Foundation' => 'Honorary Foundation',
+    //         'Honorary Executive' => 'Honorary Executive',
+    //     ];
 
-        return $type;
-    }
+    //     return $type;
+    // }
 
-    function emergencyRelation($type = null)
-    {
-        $type = [
-            'Husband' => 'Husband',
-            'Wife' => 'Wife',
-            'Partner' => 'Partner',
-            'Father' => 'Father',
-            'Mother' => 'Mother',
-            'Sister' => 'Sister',
-            'Brother' => 'Brother',
-            'Friend' => 'Friend',
-            'Colleague' => 'Colleague',
-        ];
+    // function emergencyRelation($type = null)
+    // {
+    //     $type = [
+    //         'Husband' => 'Husband',
+    //         'Wife' => 'Wife',
+    //         'Partner' => 'Partner',
+    //         'Father' => 'Father',
+    //         'Mother' => 'Mother',
+    //         'Sister' => 'Sister',
+    //         'Brother' => 'Brother',
+    //         'Friend' => 'Friend',
+    //         'Colleague' => 'Colleague',
+    //     ];
 
-        return $type;
-    }
+    //     return $type;
+    // }
 
-    function membershipStatus($status = null, $type= null)
-    {
-        if(isset($type)) {
-            $response = [
-                'Active' => '<span class="badge badge-soft-info">Active</span>',
-                'Dormant' => '<span class="badge badge-soft-success">Dormant</span>',
-                'Inactive' => '<span class="badge badge-soft-warning">Inactive</span>',
-                'Expired' => '<span class="badge badge-soft-danger">Expired</span>'
-            ];
-        } else {
-            $response = [
-                'Active' => 'Active',
-                'Dormant' => 'Dormant',
-                'Inactive' => 'Inactive',
-                'Expired' => 'Expired',
-            ];
-        }
+    // function membershipStatus($status = null, $type= null)
+    // {
+    //     if(isset($type)) {
+    //         $response = [
+    //             'Active' => '<span class="badge badge-soft-info">Active</span>',
+    //             'Dormant' => '<span class="badge badge-soft-success">Dormant</span>',
+    //             'Inactive' => '<span class="badge badge-soft-warning">Inactive</span>',
+    //             'Expired' => '<span class="badge badge-soft-danger">Expired</span>'
+    //         ];
+    //     } else {
+    //         $response = [
+    //             'Active' => 'Active',
+    //             'Dormant' => 'Dormant',
+    //             'Inactive' => 'Inactive',
+    //             'Expired' => 'Expired',
+    //         ];
+    //     }
 
-        if(isset($status) && $status != null) {
-            return $response[$status];
-        } else {
-            return $response;
-        }
-    }
+    //     if(isset($status) && $status != null) {
+    //         return $response[$status];
+    //     } else {
+    //         return $response;
+    //     }
+    // }
 
-    function status($status = null)
-    {
-        $status = [
-            'Yes' => 'Yes',
-            'No' => 'No',
-        ];
+    // function status($status = null)
+    // {
+    //     $status = [
+    //         'Yes' => 'Yes',
+    //         'No' => 'No',
+    //     ];
 
-        return $status;
-    }
-
-    function getProductSize($status = null, $type= null)
-    {
-        if(isset($type)) {
-            $response = [
-                    '1' => '<span class="badge badge-soft-info">Small</span>'    ,
-                    '2' => '<span class="badge badge-soft-success">Medium</span>'   ,
-                    '2' => '<span class="badge badge-soft-warning">Large</span>'   ,
-                ];
-        } else {
-            $response = [
-                    '1' => 'Small'  ,
-                    '2' => 'Medium' ,
-                    '3' => 'Large'  ,
-                ];
-        }
-        if(isset($status) && $status != null) {
-            return $response[$status];
-        } else {
-            return $response;
-        }
-    }
+    //     return $status;
+    // }
 
     // function getProductTypes($per = null)
     // {
@@ -159,52 +137,52 @@ use App\Models\Countries;
     //     return $response;
     // }
 
-    function getOfferStatus($status = null)
-    {
-        $response = [
-                '1' => 'Pending'    ,
-                '2' => 'Withdraw'   ,
-                '3' => 'Accept'     ,
-                '4' => 'Reject'
-            ];
-        if(isset($status) && $status != null) {
-            return $response[$status];
-        } else {
-            return $response;
-        }
-    }
+    // function getOfferStatus($status = null)
+    // {
+    //     $response = [
+    //             '1' => 'Pending'    ,
+    //             '2' => 'Withdraw'   ,
+    //             '3' => 'Accept'     ,
+    //             '4' => 'Reject'
+    //         ];
+    //     if(isset($status) && $status != null) {
+    //         return $response[$status];
+    //     } else {
+    //         return $response;
+    //     }
+    // }
 
-    function getTicketStatus($status = null)
-    {
-        $response = [
-                '1' => 'Approved',
-                '2' => 'Pending',
-                '3' => 'Rejected'
-            ];
-        if(isset($status) && $status != null) {
-            return $response[$status];
-        } else {
-            return $response;
-        }
-    }
+    // function getTicketStatus($status = null)
+    // {
+    //     $response = [
+    //             '1' => 'Approved',
+    //             '2' => 'Pending',
+    //             '3' => 'Rejected'
+    //         ];
+    //     if(isset($status) && $status != null) {
+    //         return $response[$status];
+    //     } else {
+    //         return $response;
+    //     }
+    // }
 
-    function getPermission($per = null)
-    {
-        $response = [
-                '1' => 'Allowed',
-                '2' => 'Not Allowed'
-            ];
-        if(isset($per) && $per != null) {
-            return $response[$per];
-        } else {
-            return $response;
-        }
-    }
+    // function getPermission($per = null)
+    // {
+    //     $response = [
+    //             '1' => 'Allowed',
+    //             '2' => 'Not Allowed'
+    //         ];
+    //     if(isset($per) && $per != null) {
+    //         return $response[$per];
+    //     } else {
+    //         return $response;
+    //     }
+    // }
 
-    function convertFileSize($bytes, $decimals = 2){ // FILE SIZE
-        $size = array('B','kB','MB','GB','TB','PB','EB','ZB','YB');
-        $factor = floor((strlen($bytes) - 1) / 3);
-        return sprintf("%.{$decimals}f", $bytes / pow(1024, $factor)) . @$size[$factor];
-    }
+    // function convertFileSize($bytes, $decimals = 2){ // FILE SIZE
+    //     $size = array('B','kB','MB','GB','TB','PB','EB','ZB','YB');
+    //     $factor = floor((strlen($bytes) - 1) / 3);
+    //     return sprintf("%.{$decimals}f", $bytes / pow(1024, $factor)) . @$size[$factor];
+    // }
 
 ?>
