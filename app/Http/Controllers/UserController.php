@@ -251,16 +251,10 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        // if (!empty($user)) {
+        if(Auth::user()->user_type != 1) {
+            return redirect()->route('users.show', ['user' => Auth::user()->id]);
+        }
 
-        //     $data = [
-        //         'user' => $user
-        //     ];
-        //     return view('admin.users.update', $data);
-
-        // } else {
-        //     return Redirect::to('user');
-        // }
         $countries = Countries::where('status', 'Active')->orderBy('name')->get();
         $user = User::find($user->id);
         return view('admin.users.edit',compact('user', 'countries'));
