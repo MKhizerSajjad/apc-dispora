@@ -274,20 +274,20 @@ $results = [
                 <div class="col-xl-12">
                     <div class="card card-animate">
                         <div class="card-header border-0 align-items-center d-flex">
-                            <h4 class="card-title mb-0 flex-grow-1">Users</h4>
-                            <div class="row">
+                            {{-- <h4 class="card-title mb-0 flex-grow-1">Users</h4> --}}
+                            <div class="row pb-4">
                                 <div class="cell">
                                     <h2>Bar Chart</h2>
                                     <div id="chart1"></div>
                                 </div>
-                                <div class="cell">
-                                <h2>Bar Chart</h2>
-                                <div id="chart2"></div>
+                                {{-- <div class="cell">
+                                    <h2>Bar Chart</h2>
+                                    <div id="chart2"></div>
                                 </div>
                                 <div class="cell">
-                                <h2>Area Chart</h2>
-                                <div id="chart3"></div>
-                                </div>
+                                    <h2>Area Chart</h2>
+                                    <div id="chart3"></div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>
@@ -329,9 +329,10 @@ $results = [
     <link href="https://unpkg.com/singledivui/dist/singledivui.min.css" rel="stylesheet" />
     <script src="https://unpkg.com/singledivui/dist/singledivui.min.js"></script>
     <script>
-
         // const response = [15, 9, 0, 25, 18, 31, 25];
         const response = <?php echo json_encode($registerUsers); ?>;
+        const pageWidth = document.documentElement.clientWidth;
+
         const { Chart } = SingleDivUI;
 
         const options = {
@@ -341,8 +342,8 @@ $results = [
                 points: response,
             },
         },
-        height: 200,
-        width: 400
+        height: 300,
+        width: pageWidth > 1025 ? 920 : ((pageWidth*80)/100)
         };
 
         new Chart('#chart1',  {
