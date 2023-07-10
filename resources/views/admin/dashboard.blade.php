@@ -275,9 +275,9 @@ $results = [
                     <div class="card card-animate">
                         <div class="card-header border-0 align-items-center d-flex">
                             {{-- <h4 class="card-title mb-0 flex-grow-1">Users</h4> --}}
-                            <div class="row pb-4">
+                            <div class="row pb-4 ps-4">
                                 <div class="cell">
-                                    <h2>Bar Chart</h2>
+                                    <h2>Registered Users</h2>
                                     <div id="chart1"></div>
                                 </div>
                                 {{-- <div class="cell">
@@ -343,7 +343,7 @@ $results = [
             },
         },
         height: 300,
-        width: pageWidth > 1025 ? 920 : ((pageWidth*80)/100)
+        width: pageWidth > 1025 ? 900 : ((pageWidth*80)/100)
         };
 
         new Chart('#chart1',  {
