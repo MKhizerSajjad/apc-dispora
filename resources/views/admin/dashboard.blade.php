@@ -269,6 +269,29 @@ $results = [
                     </div> <!-- end col -->
 
                 </div>
+
+
+                <div class="col-xl-12">
+                    <div class="card card-animate">
+                        <div class="card-header border-0 align-items-center d-flex">
+                            <h4 class="card-title mb-0 flex-grow-1">Users</h4>
+                            <div class="row">
+                                <div class="cell">
+                                    <h2>Bar Chart</h2>
+                                    <div id="chart1"></div>
+                                </div>
+                                <div class="cell">
+                                <h2>Bar Chart</h2>
+                                <div id="chart2"></div>
+                                </div>
+                                <div class="cell">
+                                <h2>Area Chart</h2>
+                                <div id="chart3"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             @else
                 <h3>Welcome {{Auth::user()->first_name}}..!</h3>
             @endif
@@ -302,4 +325,41 @@ $results = [
             }
         }
     @endphp
+
+    <link href="https://unpkg.com/singledivui/dist/singledivui.min.css" rel="stylesheet" />
+    <script src="https://unpkg.com/singledivui/dist/singledivui.min.js"></script>
+    <script>
+
+        // const response = [15, 9, 0, 25, 18, 31, 25];
+        const response = <?php echo json_encode($registerUsers); ?>;
+        const { Chart } = SingleDivUI;
+
+        const options = {
+        data: {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+            series: {
+                points: response,
+            },
+        },
+        height: 200,
+        width: 400
+        };
+
+        new Chart('#chart1',  {
+            type: 'line',
+            ...options
+        });
+
+        new Chart('#chart2',  {
+            type: 'bar',
+            ...options
+        });
+
+        new Chart('#chart3',  {
+            type: 'area',
+            ...options
+        });
+    </script>
+
+
 @endsection

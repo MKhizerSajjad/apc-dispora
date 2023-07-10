@@ -30,10 +30,8 @@ Route::group(['middleware' => ['auth']], function () { //'verified',
     Route::resource('users', UserController::class);
     Route::resource('admins', UserController::class);
     
-    Route::get('/', function () {return view('admin.dashboard');})->name('index');
     Route::get('/home', function () {return view('admin.dashboard');})->name('home');
-    Route::get('/dashboard', function () {return view('admin.dashboard');})->name('dashboard');
-
+    Route::get('/', [DashboardController::class, 'index'])->name('index');
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     Route::resource('donations', DonationController::class);

@@ -25,7 +25,22 @@ class DashboardController extends Controller
                 ->groupBy('month')
                 ->get();
 
-            return view('admin.dashboard', compact('totalUsers', 'usersCountByMonth'));
+                $registerUsers = [];
+                for ($month = 1; $month <= 12; $month++) {
+                    $found = false;
+                    foreach ($usersCountByMonth as $item) {
+                        if ($item->month == $month) {
+                            $registerUsers[] = $item->count;
+                            $found = true;
+                            break;
+                        }
+                    }
+                    if (!$found) {
+                        $registerUsers[] = 0;
+                    }
+                }
+
+            return view('admin.dashboard', compact('totalUsers', 'registerUsers'));
 
         } else {
             return view('admin.dashboard');
