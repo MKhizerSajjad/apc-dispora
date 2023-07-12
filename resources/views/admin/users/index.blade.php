@@ -143,8 +143,12 @@
                               <h5 class="card-title mb-0 flex-grow-1">Memberships</h5>
                               <div class="flex-shrink-0">
                                 <a href="{{ route('users.create') }}" class="btn btn-danger add-btn">
-                                  <i class="ri-add-line align-bottom me-1"></i>
+                                  <i class="ri-user-add-line align-bottom me-1"></i>
                                   Create Membership
+                                </a>
+                                <a class="btn btn-warning" href="{{ route('export') }}">
+                                    <i class="ri-download-cloud-2-line align-bottom me-1"></i>
+                                    Export Members
                                 </a>
 
                                 @if (($filters))
