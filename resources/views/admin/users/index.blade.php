@@ -144,12 +144,81 @@
                               <div class="flex-shrink-0">
                                 <a href="{{ route('users.create') }}" class="btn btn-danger add-btn">
                                   <i class="ri-user-add-line align-bottom me-1"></i>
-                                  Create Membership
+                                  {{-- Create Membership --}}
                                 </a>
-                                <a class="btn btn-warning" href="{{ route('export') }}">
+                                <a class="btn btn-soft-warning" href="{{ route('export') }}">
                                     <i class="ri-download-cloud-2-line align-bottom me-1"></i>
-                                    Export Members
+                                    {{-- Export Members --}}
                                 </a>
+                                <a data-bs-toggle="modal" class="btn btn-soft-danger" href="#importUser">
+                                    <i class="ri-upload-cloud-2-line"></i>
+                                    {{-- Import Members --}}
+                                </a>
+                                <div class="modal fade zoomIn" id="importUser" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered modal-lg">
+                                        <div class="modal-content border-0">
+                                            <div class="modal-header p-3 bg-soft-info">
+                                                <h5 class="modal-title" id="exampleModalLabel">Import Members </h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                                                    id="close-modal"></button>
+                                            </div>
+                                            
+                                            <form action="{{ route('import') }}" method="POST" enctype="multipart/form-data">
+                                            
+                                                <div class="modal-body">
+                                                    <div class="row p-2">
+                                                        <div class="row">
+                                                            @csrf
+                                                            <input type="file" name="file" class="form-control">
+                                                            {{-- <br> --}}
+                                                            {{-- <button class="btn btn-success">Import User Data</button>
+                                                            <a class="btn btn-warning" href="{{ route('export') }}">Export User Data</a> --}}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <div class="hstack gap-2 justify-content-end">
+                                                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                                                        <button type="submit" class="btn btn-primary">Import</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+
+                                            {{-- {!! Form::open(['route' => '{{ route('import') }}', 'method' => 'POST']) !!}
+                                                <div class="modal-body">
+                                                    <div class="row p-2">
+                                                        <div class="row">
+                                                            <div class="col-xs-4 col-sm-4 col-md-4">
+                                                                <div class="form-group">
+                                                                    <strong>Title</strong>
+                                                                    {!! Form::select('title', userTitles(), [], ['class' => 'form-select', 'placeholder' => 'Select Title']) !!}
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-xs-4 col-sm-4 col-md-4">
+                                                                <div class="form-group">
+                                                                    <strong>First Name</strong>
+                                                                    {!! Form::text('first_name', null, ['placeholder' => 'First Name', 'class' => 'form-control']) !!}
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-xs-4 col-sm-4 col-md-4">
+                                                                <div class="form-group">
+                                                                    <strong>Last Name</strong>
+                                                                    {!! Form::text('last_name', null, ['placeholder' => 'Last Name', 'class' => 'form-control']) !!}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <div class="hstack gap-2 justify-content-end">
+                                                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                                                        <button type="submit" class="btn btn-primary">Filter</button>
+                                                    </div>
+                                                </div>
+                                            {!! Form::close() !!} --}}
+                                        </div>
+                                    </div>
+                                </div>
 
                                 @if (($filters))
                                     <a data-bs-toggle="modal" class="btn btn-soft-info" href="#fillterUser">
