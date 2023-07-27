@@ -168,7 +168,7 @@
                             <div class="col-xs-4 col-sm-4 col-md-4">
                                 <div class="form-group">
                                     <label>Is Volunteer</label>
-                                    {!! Form::select('volunteer', status(), $user->volunteer, ['class' => 'form-select', 'placeholder' => 'Select Option', 'disabled' => 'disabled']) !!}
+                                    {!! Form::select('volunteer', status(), $user->volunteer, ['class' => 'form-select', 'placeholder' => 'Select Option']) !!}
                                 </div>
                             </div>
                         </div>

@@ -442,12 +442,18 @@
                         </form>
                       </div> --}}
                   <!--end card-body-->
-                  <div class="card-body">
+                  <div class="card-body" bis_skin_checked="1">
                     @if (count($data) > 0)
+
+                    
+                    
                       <div class="table-responsive table-card mb-4">
                          <div id="buttons-datatables_wrapper" class="dataTables_wrapper dt-bootstrap5 no-footer">
                         
-                          <table class="table align-middle table-nowrap mb-0" id="ticketTable">
+
+                            <table id="buttons-datatables" class="display table table-bordered dataTable no-footer" style="width:100%" aria-describedby="buttons-datatables_info">
+
+                          {{-- <table class="table aliyygn-middle table-nowrap mb-0" id="ticketTable"> --}}
                               <thead>
                                   <tr>
                                       {{-- <th scope="col" style="width: 40px;">

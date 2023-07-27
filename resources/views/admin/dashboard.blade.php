@@ -67,7 +67,7 @@ $results = [
             </div>
             <!-- end page title -->
 
-            @if(Auth::user()->id == 1)
+            @if(Auth::user()->user_type == 1)
                 <div class="row">
                     <div class="col">
 
@@ -328,14 +328,21 @@ $results = [
 
     <link href="https://unpkg.com/singledivui/dist/singledivui.min.css" rel="stylesheet" />
     <script src="https://unpkg.com/singledivui/dist/singledivui.min.js"></script>
-    <script>
-        // const response = [15, 9, 0, 25, 18, 31, 25];
-        const response = <?php echo json_encode($registerUsers); ?>;
-        const pageWidth = document.documentElement.clientWidth;
+    
+    <?php
+        $userType = Auth::user()->user_type;
+        if ($userType == 1) {
+    ?>
+<script>
+    const userType = <?php echo $userType; ?>;
 
-        const { Chart } = SingleDivUI;
+    // const response = [15, 9, 0, 25, 18, 31, 25];
+    const response = <?php echo json_encode($registerUsers); ?>;
+    const pageWidth = document.documentElement.clientWidth;
 
-        const options = {
+    const { Chart } = SingleDivUI;
+
+    const options = {
         data: {
             labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
             series: {
@@ -343,24 +350,27 @@ $results = [
             },
         },
         height: 300,
-        width: pageWidth > 1025 ? 900 : ((pageWidth*80)/100)
-        };
+        width: pageWidth > 1025 ? 900 : ((pageWidth * 80) / 100),
+    };
 
-        new Chart('#chart1',  {
-            type: 'line',
-            ...options
-        });
+    new Chart('#chart1', {
+        type: 'line',
+        ...options,
+    });
 
-        new Chart('#chart2',  {
-            type: 'bar',
-            ...options
-        });
+    new Chart('#chart2', {
+        type: 'bar',
+        ...options,
+    });
 
-        new Chart('#chart3',  {
-            type: 'area',
-            ...options
-        });
-    </script>
+    new Chart('#chart3', {
+        type: 'area',
+        ...options,
+    });
+</script>
+    <?php
+        }
+    ?>
 
 
 @endsection

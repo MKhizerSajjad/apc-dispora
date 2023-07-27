@@ -317,7 +317,8 @@ class UserController extends Controller
                 'password' => 'nullable|string|min:8|confirmed',
             ]);
         } else {
-            $redirectionURL = "'users.show', ['user' => Auth::user()->id]";
+            $userID = Auth::user()->id;
+            $redirectionURL = "'users.show', ['user' => $userID]";
             $this->validate($request, [
                 'picture' => 'file|mimes:jpeg,jpg,gif,png|max:2048',
                 'mobile_number' => 'min:12|max:18|unique:users,mobile_number,'.$user->id,
@@ -349,6 +350,7 @@ class UserController extends Controller
 
         if(!empty($data['password'])){
             $data['password'] = Hash::make($data['password']);
+            $data = Arr::except($data,array('password_confirmation'));
         }else{
             $data = Arr::except($data,array('password'));
             $data = Arr::except($data,array('password_confirmation'));
@@ -357,7 +359,11 @@ class UserController extends Controller
         $user = User::find($user->id);
         $user->update($data);
 
-        return redirect()->route($redirectionURL)->with('success','User updated successfully');
+        if(isset($userID)) {
+            return redirect()->route('users.show', ['user' => $userID])->with('success','User updated successfully');
+        } else {
+            return redirect()->route($redirectionURL)->with('success','User updated successfully');
+        }
     }
 
     /**
