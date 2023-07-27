@@ -275,9 +275,9 @@ $results = [
                     <div class="card card-animate">
                         <div class="card-header border-0 align-items-center d-flex">
                             {{-- <h4 class="card-title mb-0 flex-grow-1">Users</h4> --}}
-                            <div class="row pb-4 ps-4">
-                                <div class="cell">
-                                    <h2>Registered Users</h2>
+                            <div class="row graph-row">
+                                <div class="graph-cell">
+                                    <h2 class="graph-title">Registered Users</h2>
                                     <div id="chart1"></div>
                                 </div>
                                 {{-- <div class="cell">
@@ -326,6 +326,23 @@ $results = [
         }
     @endphp
 
+
+<style>
+    .row.graph-row {
+        display: flex;
+        width: 100%;
+    }
+    .graph-title{
+        margin-bottom: 20px;
+        display: block;
+    }
+    .graph-cell {
+        padding: 0px 0px 25px 30px;
+        width:100%;
+    }
+
+</style>
+
     <link href="https://unpkg.com/singledivui/dist/singledivui.min.css" rel="stylesheet" />
     <script src="https://unpkg.com/singledivui/dist/singledivui.min.js"></script>
     
@@ -350,8 +367,9 @@ $results = [
             },
         },
         height: 300,
-        width: pageWidth > 1025 ? 900 : ((pageWidth * 80) / 100),
-    };
+        // width: pageWidth > 1025 ? 900 : ((pageWidth*80)/100)
+        width: 'auto'
+        };
 
     new Chart('#chart1', {
         type: 'line',
@@ -363,14 +381,9 @@ $results = [
         ...options,
     });
 
-    new Chart('#chart3', {
-        type: 'area',
-        ...options,
-    });
-</script>
-    <?php
-        }
-    ?>
-
-
+        new Chart('#chart3',  {
+            type: 'area',
+            ...options
+        });
+    </script>
 @endsection
